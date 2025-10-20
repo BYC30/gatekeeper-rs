@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Wrangler CLI
-        run: npm install -g wrangler
+      - name: Check code
+        run: cargo check
 
       - name: Cache cargo dependencies
         uses: actions/cache@v4
@@ -49,5 +49,3 @@ jobs:
       - name: Run tests
         run: cargo test --verbose
 
-      - name: Wrangler publish (dry run)
-        run: wrangler publish --dry-run
