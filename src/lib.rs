@@ -1,8 +1,32 @@
 /**
 A high-performance, fault-tolerant proxy for AI models like Codex and Claude, targeting Cloudflare Workers.
 
-This crate currently contains the project skeleton and documentation to guide implementation.
-Refer to the docs in the `docs/` directory for architecture, roadmap, and task breakdown.
+Refer to docs/ for architecture, milestones, and tasks.
 */
 
-// Project skeleton; functionality will be implemented in upcoming milestones.
+pub mod config;
+pub mod errors;
+pub mod keypool;
+pub mod lb;
+
+use config::Config;
+use errors::Result;
+use lb::LoadBalancer;
+
+#[derive(Debug)]
+pub struct App {
+    pub config: Config,
+    pub lb: LoadBalancer,
+}
+
+impl App {
+    pub fn from_env() -> Result<Self> {
+        let cfg = Config::from_env()?;
+        let lb = LoadBalancer::new(cfg.lb_policy.clone(), &cfg.keys);
+        Ok(Self { config: cfg, lb })
+    }
+
+    pub fn redacted_config(&self) -> Config {
+        self.config.redacted()
+    }
+}
