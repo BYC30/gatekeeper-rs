@@ -27,3 +27,9 @@ A high-performance, fault-tolerant proxy for AI models like Codex and Claude, bu
 3.  **转发请求**: 使用选定的 Key，将原始请求转发到真正的 Codex/Claude API 服务端点。
 4.  **返回响应**: 将上游服务的响应直接返回给客户端。
 5.  **处理异常**: 如果某个 Key 返回错误（如 `429 Too Many Requests`），`gatekeeper-rs` 会将其标记为临时不可用，并自动使用下一个 Key 重试请求。
+
+## 📚 项目规划与文档
+
+- 架构设计: docs/ARCHITECTURE.md
+- 开发计划: docs/DEVELOPMENT_PLAN.md
+- 任务拆分: docs/TASKS.md
