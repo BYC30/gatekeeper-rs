@@ -1,0 +1,13 @@
+[package]
+name = "gatekeeper-rs"
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+description = "High-performance, fault-tolerant AI proxy for Cloudflare Workers"
+repository = "https://github.com/BYC30/gatekeeper-rs"
+readme = "README.md"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
