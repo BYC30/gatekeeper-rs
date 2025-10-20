@@ -9,6 +9,9 @@ pub mod errors;
 pub mod keypool;
 pub mod lb;
 
+#[cfg(target_arch = "wasm32")]
+pub mod cf;
+
 use config::Config;
 use errors::Result;
 use lb::LoadBalancer;
