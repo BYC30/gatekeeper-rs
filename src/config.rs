@@ -200,6 +200,9 @@ mod tests {
         std::env::set_var("GATEKEEPER_KEYS", "a");
         std::env::set_var("GATEKEEPER_LB_POLICY", "unknown");
         let err = Config::from_env().unwrap_err();
-        matches!(err, GatekeeperError::InvalidConfig(_));
+        assert!(matches!(
+            err,
+            crate::errors::GatekeeperError::InvalidConfig(_)
+        ));
     }
 }
